@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ========== Page Title ========== -->
+    <title>Scrize</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">
+
+    <!-- ========== Start Stylesheet ========== -->
+
+
+
+   <link rel="stylesheet" href="{% static 'fonts/icofont/icofont.min.css' %}">
+   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'validnavs.css' %}">
+   <link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+    <!-- ========== End Stylesheet ========== -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Header 
+    ============================================= -->
+    <header>
+        <!-- Start Navigation -->
+        <nav class="navbar mobile-sidenav attr-border navbar-sticky navbar-default validnavs navbar-fixed dark no-background">
+
+
+            <div class="container d-flex justify-content-between align-items-center">            
+
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        Scrize
+                    </a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+
+                    <img src="assets/img/logo.png" alt="Logo">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-times"></i>
+                    </button>
+                 
+                </div><!-- /.navbar-collapse -->
+
+                <div class="attr-right">
+                    <!-- Start Atribute Navigation -->
+                    <div class="attr-nav">
+                        <ul>
+                            <li ><a href="/login">Login</a></li>
+                            <span></span>
+                            <li class="button circle btn-gradient"><a href="#" >Get Started <i class="icofont-rounded-right"></i> </a></li>
+                        </ul>
+                    </div>
+                    <!-- End Atribute Navigation -->
+                </div>
+
+                <!-- Main Nav -->
+            </div>   
+            <!-- Overlay screen for menu -->
+            <!-- <div class="overlay-screen"></div>-->
+            <!-- End Overlay screen for menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Header -->
+
+   <!-- Start Banner 
+    ============================================= -->
+
+    <div class="banner-area auto-height bg-fixed banner-style-four text-default" ">
+        <div class="shape-bottom"></div>
+        <div class="container">
+            <div class="double-items">
+                <div class="row align-center">
+                    <div class="col-lg-12 info align-center text-center">
+                        <h2 class="herotitle" data-wow-defaul="300ms">Generate SEO blog posts in minutes,save hours of writing time. </h2>
+                        <p class="herotext" data-wow-delay="500ms">
+                            Meet Scrize: The AI writing assistant that helps you create high-quality SEO blogs, in just a few seconds!
+                        </p>
+                        <a class="btn btn-md circle" data-wow-delay="700ms" href="#">Get Started <i class="icofont-rounded-right"></i></a>
+                    </div>
+
+        
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+    <div class="maincontentarea text-center">
+        <div class="container">
+            <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="dashimage">
+                    <img src="{% static 'first.png' %}" alt="Icon">
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="container ">
+            <div class="row data align-center">
+            <div class="col-lg-6 text-center">
+                <div class="leftimage">
+                   <img src="{% static 'leftimage.png' %}" alt="Icon">
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="firstdata vertical-center">
+                    <h2>Generate high-quality SEO optimized blog posts in minutes.</h2>
+                    <p> Scrize is the ultimate writing assistant that you can use to write SEO optimized blogs.</p>
+                    <a class="btn btn-md circle" data-wow-delay="700ms" href="#}">Get Started <i class="icofont-rounded-right"></i></a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="container ">
+            <div class="row align-center data mx-auto">
+            <div class="col-lg-6 text-center">
+                <div class="firstdata ">
+                    <h2>A new way to write optimized copy</h2>
+                    <p> Scrize is the ultimate writing assistant that you can use to write SEO optimized blogs.</p>
+                    <a class="btn btn-md circle" data-wow-delay="700ms" href="#">Get Started <i class="icofont-rounded-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                 <div class="leftimage">
+                    <img src="{% static 'leftimage.png' %}" alt="Icon">
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="container ">
+            <div class="row align-center" >
+                <div class="col-lg-5" >
+                    <div class="firstprice">
+                        <h2 > Simple Pricing</h2>
+                        <p > Start with starter plan and scale with the Pro plan.</p>
+                         <a class="btn btn-md circle " data-wow-delay="700ms" href="#">Get Started <i class="icofont-rounded-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 ">
+                    <div class="pricecard">
+                        <h3> Starter</h3>
+                        <br>
+                        <h2><strong>$30</strong>/month </h2>
+                        <p style="text-style: italic;"> *Limited time only</p>
+                        <br>
+                        <ul>
+                            <li> <i class="icofont-check"></i> 50,000 words per month</li>
+                            <li> <i class="icofont-check"></i> Access our powerful SEO optimized blog editor.</li>
+                        </ul>
+                    </div>
+                     <a class="btn btn-md circle " data-wow-delay="700ms" href="#">Get Started <i class="icofont-rounded-right"></i></a>
+
+                </div>
+                <div class="col-lg-3 second text-center ">
+                    <div class="pricecardsecond ">
+                        <h3>Pro</h3>
+                        <br>
+                        <h2><strong>$115</strong>/month </h2>
+                        <br>
+                        <ul>
+                            <li> <i class="icofont-check"></i> 150,000 words per month</li>
+                            <li> <i class="icofont-check"></i> Access our powerful SEO optimized blog editor.</li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-md circle " data-wow-delay="700ms" href="#">Get Started <i class="icofont-rounded-right"></i></a>
+
+                </div>
+            </div>
+        </div>
+        <div class="container ">
+            <div class="row data">
+                <div class="col-lg-12 text-center" >
+                    <div class="final">
+                        <h2> Ready to supercharge your SEO copy writing?</h2>
+                        <p> It takes less than 15 minutes.</p>
+                         <a class="btn btn-md circle bottombutton" data-wow-delay="700ms" href="#">Get Started <i class="icofont-rounded-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<hr>
+    <!-- Start Footer 
+    ============================================= -->
+    <div class="container ">
+            <div class="row">
+                        <div class="col-lg-6 text-center" >
+                            <p> Scrize</p>
+                        </div>
+                        <div class="col-lg-6 text-center" >
+                            <p> Copyright © 2022. All rights reserved.</p>
+                        </div>
+            </div>
+    </div>
+
+    <!-- End Footer -->
+    
+    <!-- jQuery Frameworks
+    ============================================= -->
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+
+</body>
+</html>
