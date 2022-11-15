@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,17 +10,17 @@
     <!-- ========== Page Title ========== -->
     <title>Scrize Register</title>
 
-    <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+   <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">
 
     <!-- ========== Start Stylesheet ========== -->
 
-    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{url_for('static',filename='fonts/icofont/icofont.min.css') }}">
-     <link rel="stylesheet" href="{{url_for('static',filename='validnavs.css') }}">
-     <link rel="stylesheet" href="{{url_for('static',filename='font-awesome.min.css') }}">
-     <link rel="stylesheet" href="{{url_for('static',filename='font-awesome.min.css') }}">
-     <link rel="stylesheet" href="{{url_for('static',filename='dash.css') }}">
+
+
+   <link rel="stylesheet" href="{% static 'fonts/icofont/icofont.min.css' %}">
+   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'validnavs.css' %}">
+   <link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'dash.css' %}">
 
     <!-- ========== End Stylesheet ========== -->
 
@@ -67,6 +68,6 @@
 
 
 
-   <script src="{{url_for('static',filename='js/jquery.min.js') }}"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
 </body>
 </html>
