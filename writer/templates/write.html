@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -13,21 +14,24 @@
    <meta name="keywords" content="">
 
    <!-- Favicon -->
-   <link rel="shortcut icon" href="../../../assets/img/favicon.png">
+   <link rel="shortcut icon" href="{% static 'img/favicon.png'%}">
 
    <!-- Web Fonts -->
    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="{{url_for('static',filename='plugins/apex/apexcharts.css') }}">
 
    <!-- ======= BEGIN GLOBAL MANDATORY STYLES ======= -->
-   <link rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.min.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='fonts/icofont/icofont.min.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='plugins/perfect-scrollbar/perfect-scrollbar.min.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='css/style.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='plugins/quill/katex.min.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='plugins/quill/monokai-sublime.min.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='plugins/quill/quill.snow.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='plugins/quill/quill.bubble.css') }}">
+
+
+
+   <link rel="stylesheet" href="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.css' %}">
+   <link rel="stylesheet" href="{% static 'fonts/icofont/icofont.min.css' %}">
+   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'plugins/apex/apexcharts.css' %}">
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <link rel="stylesheet" href="{% static 'plugins/quill/katex.min.css' %}">
+     <link rel="stylesheet" href="{% static 'plugins/quill/monokai-sublime.min.css' %}">
+     <link rel="stylesheet" href="{% static 'plugins/quill/quill.snow.css' %}">
+     <link rel="stylesheet" href="{% static 'plugins/quill/quill.bubble.css' %}">
 
    <!-- ======= END MAIN STYLES ======= -->
 
@@ -46,6 +50,8 @@
                     <div class="col-lg-4">
 
                     <form method="POST" id="myform">
+                     {% csrf_token %}
+
                     <div class="form-element base-control mb-30 ">
               <div class="row">
                    <div class="col-xl-6">
@@ -82,7 +88,7 @@
                         </div>
 
                        </form>
-<textarea id="exampleTextarea1" class="theme-input-style" placeholder="Output" name="output"> {{blogExpandedA}}</textarea>
+<textarea id="exampleTextarea1" class="theme-input-style" placeholder="Output" name="output"> {{ blogExpandedA }}</textarea>
                     </div>
                     <div class="col-lg-6" id="form">
                     <section class="full-editor">
@@ -101,7 +107,7 @@
                                             <div id="full-container">
                                             <div class="editor" id="form">
                                                 <div>
-
+                                                {{ blogExpandedA }}
                                                 </div>
                                             </div>
                                             </div>
@@ -127,24 +133,20 @@
 
 
    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
-            <link rel="stylesheet" href="{{url_for('static',filename='css/style.css') }}">
 
-   <script src="{{url_for('static',filename='js/jquery.min.js') }}"></script>
-   <script src="{{url_for('static',filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-   <script src="{{url_for('static',filename='plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-   <script src="{{url_for('static',filename='js/script.js') }}"></script>
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+   <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+         <script src="{% static 'js/script.js' %}"></script>
+   <script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+   <script src="{% static 'plugins/apex/custom-apexcharts.js' %}"></script>
+   <script src="{% static 'plugins/apex/apexcharts.min.js' %}"></script>
+   <script src="{% static 'plugins/quill/katex.min.js' %}"></script>
+   <script src="{% static 'plugins/quill/highlight.min.js' %}"></script>
+   <script src="{% static 'plugins/quill/quill.min.js' %}"></script>
+   <script src="{% static 'plugins/quill/custom-quill.js' %}"></script>
 
-   <script src="{{url_for('static',filename='plugins/quill/katex.min.js') }}"></script>
-   <script src="{{url_for('static',filename='plugins/quill/highlight.min.js') }}"></script>
-   <script src="{{url_for('static',filename='plugins/quill/quill.min.js') }}"></script>
-   <script src="{{url_for('static',filename='plugins/quill/custom-quill.js') }}"></script>
 
 
-<script>
-$("#myform").submit(function(e) {
-    e.preventDefault();
-});
-</script>
    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
 </body>
 

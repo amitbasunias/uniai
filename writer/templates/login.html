@@ -46,6 +46,8 @@
                                           <div class="logindiv align-self-center">
                                 <div class="loginform">
                                     <form method="post">
+                                   {% csrf_token %}
+
                                         <div class="formgroup">
                                             <label for="email">Email</label>
                                             <input type="email" placeholder="Enter your email" name="email" id="email" required>
