@@ -1,13 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Writing tool powered with OpenAI GPT-3">
-	<title>BgWriter</title>
-	<link href="assets/css/fontawesome.min.css" rel="stylesheet">
-    <link href="assets/css/quill.snow.css" rel="stylesheet">
-	<link href="assets/css/app.css" rel="stylesheet">
+	<title>UniAI</title>
+	<link href="{%static 'assets/css/fontawesome.min.css'%}" rel="stylesheet">
+    <link href="{%static 'assets/css/quill.snow.css'%}" rel="stylesheet">
+    <link href="{%static 'assets/css/app.css'%}" rel="stylesheet">
 </head>
 <body>
 <div id="main" class="main-hidden">
@@ -373,7 +374,7 @@
 	<h1 id="title">Raffle Headlines</h1>
 </div>
 
-<form id="form" method="post" action="assets/ai/raffel-headlines.php"  target="framesource">
+<form id="form" method="post" action="/blog"  target="framesource">
 <div class="prompt-wrap" id="prompt-title">
 <h2 id="opt-heading">Enter product/brand name</h2>
 <textarea id="usertitle" type="text" name="usertitle" placeholder="e.g. BgWriter" spellcheck="false" autocomplete="off"></textarea>
@@ -565,10 +566,10 @@
 <grammarly-button class="grammarly-button"></grammarly-button>
 
 <script src="https://unpkg.com/@grammarly/editor-sdk?clientId=client_EXrxJ6KKpBoAQToMWUUrfw"></script>
-<script src="https://kit.fontawesome.com/d128a728e7.js" crossorigin="anonymous"></script>
-<script src="assets/js/fontawesome.min.js"></script>
-<script src="assets/js/quill.min.js"></script>
-<script src="assets/js/appnew.js"></script>
+<script src="https://kit.fontawesome.com/d128a728e7.js"></script>
+<script src="{% static 'assets/js/fontawesome.min.js'%}"></script>
+<script src="{% static 'assets/js/quill.min.js'%}"></script>
+<script src="{% static 'assets/js/appnew.js'%}"></script>
 <script>
 </script>
  </body>

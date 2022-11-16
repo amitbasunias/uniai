@@ -18,3 +18,4 @@ def headline (headprompt):
     if 'choices' in response:
         answer= response['choices'][0]['text']
     return answer
+

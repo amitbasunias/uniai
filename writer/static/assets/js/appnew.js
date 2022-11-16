@@ -551,7 +551,7 @@ let raffelHeadlines = document.getElementById("raffel-headlines"),
 		titleText.innerHTML = "Blog Post";
 		optHeading.innerHTML = "Enter blog title";
 		subHeading.innerHTML = "Enter Keywords";
-		formAction.action = 'assets/ai/blog-post.php';
+		formAction.action = "#";
 		userTitle.setAttribute('placeholder', "e.g. How To Pick A Profitable Blog Niche");
 		userPrompt.setAttribute('placeholder', 'e.g. blog, niche, profitable, pick');
 		outPut.style.display = "none";
@@ -568,7 +568,7 @@ let raffelHeadlines = document.getElementById("raffel-headlines"),
 		titleText.innerHTML = "Micro Blog Post";
 		optHeading.innerHTML = "Enter blog title";
 		subHeading.innerHTML = "Enter Keywords";
-		formAction.action = 'assets/ai/blog.php';
+		formAction.action = "#";
 		userTitle.setAttribute('placeholder', "e.g. How To Pick A Profitable Blog Niche");
 		userPrompt.setAttribute('placeholder', 'e.g. blog, niche, profitable, pick');
 		outPut.style.display = "none";
