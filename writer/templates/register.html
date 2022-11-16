@@ -42,6 +42,7 @@
                                 <div class="logindiv align-self-center">
                                 <div class="loginform">
                                     <form method="post">
+                                      {% csrf_token %} 
                                         <div class="formgroup">
                                             <label for="firstname">First Name</label>
                                             <input type="text" placeholder="Enter Firstname" name="firstname" id="firstname" required>
@@ -50,9 +51,9 @@
                                             <label for="email">Email</label>
                                             <input type="email" placeholder="Enter Email" name="email" id="email" required>
                                              <label for="password">Password</label>
-                                            <input type="password" placeholder="Enter your password" name="password" id="password" required>
+                                            <input type="password" placeholder="Enter your password" name="password1" id="password1" required>
                                           <label for="passwordval">Confirm Passworrd</label>
-                                            <input type="password" placeholder="Enter your password again" name="passwordval" id="passwordval" required>
+                                            <input type="password" placeholder="Enter your password again" name="password2" id="password2" required>
                                         </div>
                                         <button type="submit" class="btn btn-secondary btn-block"> Sign up</button>
                                         <a href="/login"> Already have an account?</a>
