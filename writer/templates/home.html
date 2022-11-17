@@ -69,9 +69,14 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
-                            <li ><a href="/login">Login</a></li>
-                            <span></span>
-                            <li class="button circle btn-gradient"><a href="/register" >Get Started <i class="icofont-rounded-right"></i> </a></li>
+                            {% if user.is_authenticated %}
+                                {{user.email}}
+                                <li><a href= "/logout">Logout</a></li>
+                            {% else %}    
+                                <li ><a href="/login">Login</a></li>
+                                <span></span>
+                                <li class="button circle btn-gradient"><a href="/register" >Get Started <i class="icofont-rounded-right"></i> </a></li>
+                            {% endif %}
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -166,7 +171,7 @@
                         <h3> Starter</h3>
                         <br>
                         <h2><strong>$30</strong>/month </h2>
-                        <p style="text-style: italic;"> *Limited time only</p>
+                        <p style="font-style: italic;"> *Limited time only</p>
                         <br>
                         <ul>
                             <li> <i class="icofont-check"></i> 50,000 words per month</li>

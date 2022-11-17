@@ -1,22 +1,42 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import AuthenticationForm
 from .beta import *
-from django.contrib.auth import login
 from .forms import NewUserForm
 
 # Create your views here.
 def home(request):
+    username = None
+    if (request.user.is_authenticated):
+        username = request.user.email
     return render(request, 'home.html')
 
 def dashboard(request):
     return render(request, 'dash.html')
 
-def login2(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        return redirect('/dashboard')
-    return render(request, 'login.html')
+def loginview(request):
+    
+    if request.method == "POST":
+
+        form_class = AuthenticationForm(request.POST, request.POST)
+        if form_class.is_valid():
+            username = form_class.cleaned_data['username']
+            password = form_class.cleaned_data['password']
+
+            user = authenticate(username=username, password=password)
+
+            login(request, user)
+            return redirect('/')
+        else:
+            print("login invalid")
+            print(form_class.errors)
+    #if request.method == 'POST':
+        #email = request.POST.get('email')
+        #password = request.POST.get('password')
+        #return redirect('/dashboard')
+    return render(request, template_name='login.html')
 
 def register(request):
     if request.method == "POST":
