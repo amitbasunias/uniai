@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import NewUserForm
-from .models import UserAcc
+from .models import UserAcc, packages
 
 # Register your models here.
 
@@ -26,4 +26,7 @@ class AdminUserAcc(UserAdmin):
     search_fields = ('email',)
     ordering = ('email',)
 
+
+
 admin.site.register(UserAcc, AdminUserAcc)
+admin.site.register(packages)

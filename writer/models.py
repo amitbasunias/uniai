@@ -20,3 +20,15 @@ class UserAcc(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+class packages(models.Model):
+    name = models.CharField(max_length=20)
+    value = models.IntegerField(default=0)
+    price = models.CharField(max_length=10,default='')
+    cycle = models.CharField(max_length=20,default='')
+    limited_offer_desc = models.CharField(max_length=150, blank=True)
+    desc1 = models.CharField(max_length=150)
+    desc2 = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name

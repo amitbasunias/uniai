@@ -1,17 +1,28 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
+from django.views.generic import ListView
 from .beta import *
 from .forms import NewUserForm
+from .models import packages
 
 # Create your views here.
 def home(request):
-    username = None
-    if (request.user.is_authenticated):
-        username = request.user.email
-    return render(request, 'home.html')
+
+    model = packages
+    template_name = "home.html"
+
+    test_var = "This is a test"
+
+    p_list = packages.objects.all()
+    #def get_queryset(self):
+        #return packages.objects.all()
+
+    return render(request,'home.html',{
+        'test_var': test_var,
+        'p_list': p_list,
+    })
 
 def dashboard(request):
     return render(request, 'dash.html')

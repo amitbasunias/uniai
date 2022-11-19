@@ -70,7 +70,8 @@
                     <div class="attr-nav">
                         <ul>
                             {% if user.is_authenticated %}
-                                {{user.email}}
+                                <li><a>{{user.email}}</a></li>
+                                <li><a>Credits: {{user.credit}}</a></li>
                                 <li><a href= "/logout">Logout</a></li>
                             {% else %}    
                                 <li ><a href="/login">Login</a></li>
@@ -166,35 +167,23 @@
                          <a class="btn btn-md circle " data-wow-delay="700ms" href="/register">Get Started <i class="icofont-rounded-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 ">
-                    <div class="pricecard">
-                        <h3> Starter</h3>
-                        <br>
-                        <h2><strong>$30</strong>/month </h2>
-                        <p style="font-style: italic;"> *Limited time only</p>
-                        <br>
-                        <ul>
-                            <li> <i class="icofont-check"></i> 50,000 words per month</li>
-                            <li> <i class="icofont-check"></i> Access our powerful SEO optimized blog editor.</li>
-                        </ul>
-                    </div>
-                     <a class="btn btn-md circle " data-wow-delay="700ms" href="/register">Get Started <i class="icofont-rounded-right"></i></a>
+                    {% for packages in p_list|slice:":2" %}
+                    <div class="col-lg-3 ">
+                        <div class="pricecard">
+                            <h3>{{ packages.name }}</h3>
+                            <br>
+                            <h2><strong>${{ packages.price }}</strong>/{{ packages.cycle }} </h2>
+                            <p style="font-style: italic;"> {{ packages.limited_offer_desc }}</p>
+                            <br>
+                            <ul>
+                                <li> <i class="icofont-check"></i> {{ packages.desc1 }}</li>
+                                <li> <i class="icofont-check"></i> {{ packages.desc2 }}</li>
+                            </ul>
+                        </div>
+                        <a class="btn btn-md circle " data-wow-delay="700ms" href="/register">Get Started <i class="icofont-rounded-right"></i></a>
 
-                </div>
-                <div class="col-lg-3 second text-center ">
-                    <div class="pricecardsecond ">
-                        <h3>Pro</h3>
-                        <br>
-                        <h2><strong>$115</strong>/month </h2>
-                        <br>
-                        <ul>
-                            <li> <i class="icofont-check"></i> 150,000 words per month</li>
-                            <li> <i class="icofont-check"></i> Access our powerful SEO optimized blog editor.</li>
-                        </ul>
                     </div>
-                    <a class="btn btn-md circle " data-wow-delay="700ms" href="/register">Get Started <i class="icofont-rounded-right"></i></a>
-
-                </div>
+                    {% endfor %}
             </div>
         </div>
         <div class="container ">
