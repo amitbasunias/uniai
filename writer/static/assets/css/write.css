@@ -15,10 +15,10 @@ body {
 }
 /* General */
 :root {
-  --primary: #1EA1A1;
-  --primarylight: #f6f9fb;
+  --primary: #6045E2;
+  --primarylight: #FFF;
   --secondary: #f7fbfb;
-  --navy: #2A0944;
+  --navy: #6045E2;
   --red: #D32F2F;
   --green: #388E3C;
   --white: #ffffff;
@@ -27,7 +27,7 @@ body {
   --gray: #dddddd;
   --graydark: #444444;
   --graymid: #B2B1B9;
-  --hover: #c3e1e1;
+  --hover: #ddd8f7;
   --graylight: #f1f5f9;
 }
 * {

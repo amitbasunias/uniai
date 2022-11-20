@@ -1,9 +1,11 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
    <!-- Page Title -->
-   <title>Profile</title>
+   <title>Dashmin</title>
 
    <!-- Meta Data -->
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,14 +19,15 @@
 
    <!-- Web Fonts -->
    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="{{url_for('static',filename='plugins/apex/apexcharts.css') }}">
 
    <!-- ======= BEGIN GLOBAL MANDATORY STYLES ======= -->
-   <link rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.min.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='fonts/icofont/icofont.min.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='plugins/perfect-scrollbar/perfect-scrollbar.min.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='css/style.css') }}">
-   <link rel="stylesheet" href="{{url_for('static',filename='css/style.css') }}">
+
+
+   <link rel="stylesheet" href="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.css' %}">
+   <link rel="stylesheet" href="{% static 'fonts/icofont/icofont.min.css' %}">
+   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'plugins/apex/apexcharts.css' %}">
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
    <!-- ======= END MAIN STYLES ======= -->
 
@@ -42,72 +45,73 @@
                <div class="row">
                     <div class="col-12">
                         <!-- Contact Header -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-element py-30 mb-30">
+                                <h3> User Details</h3>
+                                <hr>
+                                <p> Name: Amit</p>
+                                <hr>
+                                <p> Username: Amit</p>
+                                <hr>
+                                <p> Email: Amit</p>
+                                <hr>
+                                 <p> You are currently Using: Pro Plan</p>
+                                <hr>
+                                 <p> Remaining Creding: 100 </p>
+                                <a href="#" class="btn"> Add More Credits</a>
 
+                            </div>
+                        </div>
+                         <div class="col-lg-6">
+                             <div class="form-element py-30 mb-30">
+                                <div class="tab-content">
+                        <div class="tab-pane fade show active" id="general">
 
+                                        <h4 class="mb-4">Change Password</h4>
+
+                                        <form action="#">
+                                            <!-- Form Group -->
+                                            <div class="form-group mb-20">
+                                                <label for="oldPassword" class="mb-2 font-14 bold black">Old Password</label>
+                                                <input type="password" id="oldPassword" class="theme-input-style" placeholder="Type Here">
+                                            </div>
+                                            <!-- End Form Group -->
+
+                                            <!-- Form Group -->
+                                            <div class="form-group mb-20">
+                                                <label for="newPassword" class="mb-2 font-14 bold black">New Password</label>
+                                                <input type="password" id="newPassword" class="theme-input-style" placeholder="Type Here">
+                                            </div>
+                                            <!-- End Form Group -->
+
+                                            <!-- Form Group -->
+                                            <div class="form-group mb-20">
+                                                <label for="retypePassword" class="mb-2 font-14 bold black">Retype Password</label>
+                                                <input type="password" id="retypePassword" class="theme-input-style" placeholder="Type Here">
+                                            </div>
+                                            <!-- End Form Group -->
+
+                                            <div class="button-group mt-30">
+                                                <button type="submit" class="btn">Save Changes</button>
+                                                <button type="button" class="link-btn bg-transparent ml-3 soft-pink">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                             </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                         <!-- End Contact Header -->
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <!-- Project Box -->
-                        <div class="project-box one mb-30">
-                            <!-- Custom Checkbox -->
-                            <label class="custom-checkbox">
-                                <input type="checkbox" class="projectCheckbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <!-- End Custom Checkbox -->
-
-                            <div class="d-flex justify-content-between align-items-center mb-20">
-                                <div class="">
-                                    <a href="task-list.html"><h4>Dashmin Admin Template</h4></a>
-                                </div>
-
-                                <div class="d-flex align-items-center">
-                                    <!-- Starred -->
-
-                                    <!-- End Starred -->
-
-                                    <!-- Dropdown Button -->
-                                    <div class="dropdown-button ml-3">
-                                        <a href="#" class="d-flex align-items-center" data-toggle="dropdown">
-                                            <div class="menu-icon mr-0">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="create-new.html" class="edit">Edit</a>
-                                            <a href="#" class="select">Select</a>
-                                            <a href="#" class="delete">Delete</a>
-                                        </div>
-                                    </div>
-                                    <!-- End Dropdown Button -->
-                                 </div>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-end pt-1">
-                                <div class="font-12">
-                                    <p class="mb-0 l-height">Last update</p>
-                                    <p class="bold black">21 Jan 2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Project Box -->
-                    </div>
 
 
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <!-- Project Box -->
-                        <div class="project-box d-flex align-items-center justify-content-center mb-30">
-                           <a href="create-new.html" class="bold font-14 black d-flex align-items-center">
-                              <img src="../../../assets/img/svg/plus.svg" alt="" class="svg mr-2">
-                              Create New Project
-                           </a>
-                        </div>
-                        <!-- End Project Box -->
-                    </div>
+
+
+
                 </div>
             </div>
          </div>
@@ -119,14 +123,13 @@
 
 
    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
-            <link rel="stylesheet" href="{{url_for('static',filename='css/style.css') }}">
 
-   <script src="{{url_for('static',filename='js/jquery.min.js') }}"></script>
-   <script src="{{url_for('static',filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-   <script src="{{url_for('static',filename='plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-   <script src="{{url_for('static',filename='js/script.js') }}"></script>
-   <script src="{{url_for('static',filename='plugins/apex/apexcharts.min.js') }}"></script>
-   <script src="{{url_for('static',filename='plugins/apex/custom-apexcharts.js') }}"></script>
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+   <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+         <script src="{% static 'js/script.js' %}"></script>
+   <script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+   <script src="{% static 'plugins/apex/custom-apexcharts.js' %}"></script>
+   <script src="{% static 'plugins/apex/apexcharts.min.js' %}"></script>
 
    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
 </body>

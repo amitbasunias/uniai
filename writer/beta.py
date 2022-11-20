@@ -16,6 +16,7 @@ def headline (headprompt):
         presence_penalty=0
     )
     if 'choices' in response:
+
         answer= response['choices'][0]['text']
     return answer
 

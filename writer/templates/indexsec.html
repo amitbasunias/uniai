@@ -8,13 +8,13 @@
 	<title>UniAI</title>
 	<link href="{%static 'assets/css/fontawesome.min.css'%}" rel="stylesheet">
     <link href="{%static 'assets/css/quill.snow.css'%}" rel="stylesheet">
-    <link href="{%static 'assets/css/app.css'%}" rel="stylesheet">
+    <link href="{%static 'assets/css/write.css'%}" rel="stylesheet">
 </head>
 <body>
 <div id="main" class="main-hidden">
 <div class="menu" id="menu">
  <!-- Website name and logout button -->
- <h1>BgWriter<span class="primary">.</span>ai</h1>
+ <h1>UniAi<span class="primary">.</span>ai</h1>
  <!-- ::START:: View all documents button -->
  <ul class="nav-list docbtn">
 <li id="documents">
@@ -55,11 +55,9 @@
      <li id="blog">
          <span>Micro Blog Post</span>
      </li>
+
      <li id="blog-title">
          <span>Blog Title</span>
-     </li>
-     <li id="blogdes">
-         <span>Blog Description</span>
      </li>
      <li id="blog-intro">
          <span>Blog Intro</span>
@@ -374,9 +372,10 @@
 	<h1 id="title">Raffle Headlines</h1>
 </div>
 
-<form id="form" method="post" action="/blog"  target="framesource">
-<div class="prompt-wrap" id="prompt-title">
-<h2 id="opt-heading">Enter product/brand name</h2>
+<form id="form" method="post" action="/blog" name= "form" target="framesource">
+     {% csrf_token %}
+<div class="prompt-wrap" id="prompt-title" name="raffleheadline">
+<h2 id="opt-heading" >Enter product/brand name</h2>
 <textarea id="usertitle" type="text" name="usertitle" placeholder="e.g. BgWriter" spellcheck="false" autocomplete="off"></textarea>
 <p class="charlimit" id="titlelimit"></p>
 </div>
@@ -422,8 +421,8 @@
 </div>
 <div id="tone-wrap">
   <label for="tone-option">Choose a tone</label>
-  <select id="tone-option">
-    <option selected>🚫 None</option>
+  <select id="tone-option" name="toneoption">
+    <option value="1" selected>🚫 None</option>
     <option value="1">Formal</option>
     <option value="2">Informal</option>
     <option value="3">Optimistic</option>
@@ -517,7 +516,9 @@
 <input id="submit" class="submit" type="submit" name="submit" value="Create">
 </form>
 
-<div id="output" contenteditable="true" spellcheck="false" autocomplete="off"><div class="generating-text"></div></div>
+<div id="output" contenteditable="true" spellcheck="false" autocomplete="off"><div class="generating-text">
+    {{output}}
+</div></div>
 <iframe id="framesource" class="app-input" name="framesource"></iframe>
 <div id="save-content-wrap">
 <form id="sdoc" method="post" action="assets/php/sdoc.php" enctype="multipart/form-data" target="saveframe">
@@ -527,8 +528,10 @@
 </form>
 <iframe id="saveframe" class="app-input" name="saveframe"></iframe>
 </div>
-
-  <div id="footer">Copyright © <span id="latest-year">2022</span> by BgWriter All Rights Reserved.</div>
+     {% for out in result %}
+<div class="out">{{out}} {{result}}</div>
+     {% endfor %}
+  <div id="footer">Copyright © <span id="latest-year">2022</span> by UniAI All Rights Reserved.</div>
  </div>
 </div>
 
@@ -569,7 +572,7 @@
 <script src="https://kit.fontawesome.com/d128a728e7.js"></script>
 <script src="{% static 'assets/js/fontawesome.min.js'%}"></script>
 <script src="{% static 'assets/js/quill.min.js'%}"></script>
-<script src="{% static 'assets/js/appnew.js'%}"></script>
+<script src="{% static 'assets/js/writing.js'%}?version=34"></script>
 <script>
 </script>
  </body>
