@@ -4,7 +4,6 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import ListView
 from .beta import *
-<<<<<<< HEAD
 
 from .creativity import *
 from .utone import *
@@ -14,11 +13,9 @@ import openai
 OPENAI_API_KEY = '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'
 
 openai.api_key = OPENAI_API_KEY
-=======
 from .forms import NewUserForm
 from .models import packages
 
->>>>>>> 8e7f8eff870ec2a7c468cbea0b1cfa0d02aca7cc
 # Create your views here.
 def home(request):
 
@@ -39,7 +36,7 @@ def home(request):
 def dashboard(request):
     return render(request, 'dash.html')
 
-<<<<<<< HEAD
+
 def package(request):
     return render(request, 'package.html')
 
@@ -71,7 +68,6 @@ def loginview(request):
         #password = request.POST.get('password')
         #return redirect('/dashboard')
     return render(request, template_name='login.html')
->>>>>>> 8e7f8eff870ec2a7c468cbea0b1cfa0d02aca7cc
 
 def register(request):
     if request.method == "POST":
@@ -124,7 +120,6 @@ def write(request):
             blogExpandedA = blogA.replace('\n', '<br>')
         print(blogExpandedA)
 
-<<<<<<< HEAD
     return render(request, 'write.html')
 def create(request):
     if request.method =='POST':
@@ -144,4 +139,3 @@ def create(request):
         aioutput= direction(usertile, usertext, tone, creatives, qa, aa, qb, num)
         print(aioutput)
     return render(request, 'indexsec.html')
->>>>>>> 8e7f8eff870ec2a7c468cbea0b1cfa0d02aca7cc
