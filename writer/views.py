@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.views.generic import ListView
 from .beta import *
+<<<<<<< HEAD
 
 from .creativity import *
 from .utone import *
@@ -9,13 +14,32 @@ import openai
 OPENAI_API_KEY = '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'
 
 openai.api_key = OPENAI_API_KEY
+=======
+from .forms import NewUserForm
+from .models import packages
+
+>>>>>>> 8e7f8eff870ec2a7c468cbea0b1cfa0d02aca7cc
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+
+    model = packages
+    template_name = "home.html"
+
+    test_var = "This is a test"
+
+    p_list = packages.objects.all()
+    #def get_queryset(self):
+        #return packages.objects.all()
+
+    return render(request,'home.html',{
+        'test_var': test_var,
+        'p_list': p_list,
+    })
 
 def dashboard(request):
     return render(request, 'dash.html')
 
+<<<<<<< HEAD
 def package(request):
     return render(request, 'package.html')
 
@@ -26,14 +50,41 @@ def profile(request):
 def history(request):
     return render(request, 'history.html')
 
-def login(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        return redirect('/dashboard')
-    return render(request, 'login.html')
+def loginview(request):
+    
+    if request.method == "POST":
+
+        form_class = AuthenticationForm(request.POST, request.POST)
+        if form_class.is_valid():
+            username = form_class.cleaned_data['username']
+            password = form_class.cleaned_data['password']
+
+            user = authenticate(username=username, password=password)
+
+            login(request, user)
+            return redirect('/')
+        else:
+            print("login invalid")
+            print(form_class.errors)
+    #if request.method == 'POST':
+        #email = request.POST.get('email')
+        #password = request.POST.get('password')
+        #return redirect('/dashboard')
+    return render(request, template_name='login.html')
+>>>>>>> 8e7f8eff870ec2a7c468cbea0b1cfa0d02aca7cc
 
 def register(request):
+    if request.method == "POST":
+        form = NewUserForm(request.POST)     
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Sign Up Successful")
+            return redirect("/")
+        print(form.errors)
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+    form = NewUserForm()
+
     return render(request, 'register.html')
 
 def write(request):
@@ -49,30 +100,31 @@ def write(request):
             blogExpandedA = blogA.replace('\n', '<br>')
         elif category == 'blogintro':
             headprompt = f" Expand the topic into a clever and creative blog introduction: \n\n {details} \n in {language} "
-            blogA = beta.headline(headprompt)
+            blogA = headline(headprompt)
             blogExpandedA = blogA.replace('\n', '')
         if category == 'blogcon':
             headprompt = f" Expand the topic into a clever and creative blog conclusion:\n\n {details} \n in {language} "
-            blogA = beta.headline(headprompt)
+            blogA = headline(headprompt)
             blogExpandedA = blogA.replace('\n', '<br>')
         elif category == 'blogpara':
             headprompt = f" Expand the topic into a clever and witty blog section: \n\n {details} \n in {language} "
-            blogA = beta.headline(headprompt)
+            blogA = headline(headprompt)
             blogExpandedA = blogA.replace('\n', '<br>')
         elif category == 'translate':
             headprompt = f" Make a creative story about: \n\n {details} \n in {language} "
-            blogA = beta.headline(headprompt)
+            blogA = headline(headprompt)
             blogExpandedA = blogA.replace('\n', '<br>')
         elif category == 'email':
             headprompt = f"Write video description from following details: \n\n {details} \n in {language} "
-            blogA = beta.headline(headprompt)
+            blogA = headline(headprompt)
             blogExpandedA = blogA.replace('\n', '<br>')
         elif category == 'business':
             headprompt = f"White a product description about: \n\n {details} \n in {language} "
-            blogA = beta.headline(headprompt)
+            blogA = headline(headprompt)
             blogExpandedA = blogA.replace('\n', '<br>')
         print(blogExpandedA)
 
+<<<<<<< HEAD
     return render(request, 'write.html')
 def create(request):
     if request.method =='POST':
@@ -92,3 +144,4 @@ def create(request):
         aioutput= direction(usertile, usertext, tone, creatives, qa, aa, qb, num)
         print(aioutput)
     return render(request, 'indexsec.html')
+>>>>>>> 8e7f8eff870ec2a7c468cbea0b1cfa0d02aca7cc

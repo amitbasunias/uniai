@@ -46,11 +46,10 @@
                                           <div class="logindiv align-self-center">
                                 <div class="loginform">
                                     <form method="post">
-                                   {% csrf_token %}
-
+                                        {% csrf_token %}
                                         <div class="formgroup">
                                             <label for="email">Email</label>
-                                            <input type="email" placeholder="Enter your email" name="email" id="email" required>
+                                            <input type="email" placeholder="Enter your email" name="username" id="username" required>
                                              <label for="password">Password</label>
                                             <input type="password" placeholder="Enter your password" name="password" id="password" required>
                                         </div>
