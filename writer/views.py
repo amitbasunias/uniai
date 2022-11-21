@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from django.views.generic import ListView
-from .beta import *
+from django.http import JsonResponse, HttpResponse
+import json
 
+from .beta import *
 from .creativity import *
 from .utone import *
 from .functions import *
@@ -122,20 +123,56 @@ def write(request):
 
     return render(request, 'write.html')
 def create(request):
+
     if request.method =='POST':
-        usertile = request.POST.get('usertitle')
-        usertext = request.POST.get('userprompt')
-        usertone = request.POST.get('tone')
-        creativeness = request.POST.get('creativity')
-        qa = request.POST.get('qa')
-        aa = request.POST.get('aa')
-        qb = request.POST.get('qb')
-        num = request.POST.get('num')
+
+        get_result(request)
+
+        #usertile = request.POST.get('usertitle')
+        #usertext = request.POST.get('userprompt')
+        #usertone = request.POST.get('tone')
+        #creativeness = request.POST.get('creativity')
+        #qa = request.POST.get('qa')
+        #aa = request.POST.get('aa')
+        #qb = request.POST.get('qb')
+        #num = request.POST.get('num')
+        #creatives= hello(creativeness)
+        #tone=utone(usertone)
+        #print(usertext)
+        #print(tone)
+        #print(creatives)
+        #aioutput= direction(usertile, usertext, tone, creatives, qa, aa, qb, num)
+        #print(aioutput)
+        #print(type(aioutput))
+
+        #data = { "aioutput": aioutput,}
+        #return HttpResponse(json.dumps(data))
+
+        #if request.method =='GET':
+            #return JsonResponse(data)
+    return render(request, 'indexsec.html')
+
+def get_result(request):
+
+    if request.method =='POST':
+        json_req = json.loads(request.body.decode('utf-8'))
+        print(json_req)
+        print(json_req['text'])
+
+        #print("json text: ", request.body.get('text'))
+        usertile = json_req['title']
+        usertext = json_req['text']
+        usertone = json_req['tone']
+        creativeness = json_req['creativity']
+        qa = json_req['qa']
+        aa = json_req['aa']
+        qb = json_req['qb']
+        num = json_req['num']
         creatives= hello(creativeness)
         tone=utone(usertone)
-        print(usertext)
-        print(tone)
-        print(creatives)
         aioutput= direction(usertile, usertext, tone, creatives, qa, aa, qb, num)
-        print(aioutput)
-    return render(request, 'indexsec.html')
+
+    data = { "aioutput": aioutput,}
+    print(data)
+
+    return JsonResponse(data, safe=False)
