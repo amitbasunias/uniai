@@ -1705,8 +1705,6 @@
 			outPut.style.display = "block";
 			outPut.innerHTML = '<div class="generating-text"></div>';
 			formSubmit.value = "Loading...";
-			await new Promise(r => setTimeout(r, 15000));
-			outPut.style.display = 'none';
 
 
 			var user_title = userTitle.value;
@@ -1740,7 +1738,9 @@
         	.then(response => response.json())
 			.then(data => {
 				console.log('Success:', data);
-				output_field.innerHTML = data['aioutput'];
+				outPut.style.display = 'none';
+				output_field.innerHTML = '<pre>'+data['aioutput']+'</pre>';
+				formSubmit.value = "Create";
 			  })
 			
 

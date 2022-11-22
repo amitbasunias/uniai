@@ -14,6 +14,7 @@ urlpatterns = [
     path('package/', views.package),
     path('profile/', views.profile),
     path('getresult/', views.get_result),
+    path('notes/<int:notes_id>/', views.notes_view, name='notes_view'),
  #   path('blog/', views.blog),
     path('logout/', LogoutView.as_view(), {'next_page': uniai.settings.LOGOUT_REDIRECT_URL}, name='logout'),
 

@@ -15,7 +15,7 @@ OPENAI_API_KEY = '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'
 
 openai.api_key = OPENAI_API_KEY
 from .forms import NewUserForm
-from .models import packages
+from .models import packages, notes
 
 # Create your views here.
 def home(request):
@@ -23,14 +23,12 @@ def home(request):
     model = packages
     template_name = "home.html"
 
-    test_var = "This is a test"
 
     p_list = packages.objects.all()
     #def get_queryset(self):
         #return packages.objects.all()
 
     return render(request,'home.html',{
-        'test_var': test_var,
         'p_list': p_list,
     })
 
@@ -39,14 +37,25 @@ def dashboard(request):
 
 
 def package(request):
-    return render(request, 'package.html')
+    p_list = packages.objects.all()
+    return render(request, 'package.html', {
+        'p_list': p_list,
+    })
 
 def profile(request):
     return render(request, 'profile.html')
 
 
 def history(request):
-    return render(request, 'history.html')
+    view_note = notes.objects.filter(owner=request.user)
+
+    return render(request, 'history.html', { 'view_note': view_note,})
+
+def notes_view(request,notes_id):
+    edit_note = notes.objects.get(id=notes_id)
+    print(edit_note.text)
+
+    return render(request, "notes.html",{ 'edit_note': edit_note,})
 
 def loginview(request):
     

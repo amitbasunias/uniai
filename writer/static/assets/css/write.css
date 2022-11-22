@@ -854,3 +854,55 @@ input[type=range]:focus::-ms-fill-upper {
 		width: 100%!important;
 	}
 }
+
+.pre {
+	white-space: pre-line;
+}
+
+.copy-text {
+	position: relative;
+	padding: 10px;
+	background: #fff;
+	float: right;
+	display: flex;
+}
+.copy-text button {
+	padding: 10px;
+	background: #5784f5;
+	color: #fff;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.copy-text button:active {
+	background: #809ce2;
+}
+.copy-text button:before {
+	content: "Copied";
+	position: absolute;
+	top: -45px;
+	right: 0px;
+	background: #5c81dc;
+	padding: 8px 10px;
+	border-radius: 20px;
+	font-size: 15px;
+	display: none;
+}
+.copy-text button:after {
+	content: "";
+	position: absolute;
+	top: -20px;
+	right: 25px;
+	width: 10px;
+	height: 10px;
+	background: #5c81dc;
+	transform: rotate(45deg);
+	display: none;
+}
+.copy-text.active button:before,
+.copy-text.active button:after {
+	display: block;
+}
