@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.conf import settings
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import JsonResponse, HttpResponse
 import json
+import stripe
 
 from .beta import *
 from .creativity import *
@@ -185,3 +187,30 @@ def get_result(request):
     print(data)
 
     return JsonResponse(data, safe=False)
+
+def checkout(request, packages_id):
+    p_list = packages.objects.all()
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    domain_url = "https://afikur-rahman1-refactored-computing-qgp6r5x9prj3gj7-8000.preview.app.github.dev/"
+    line_item = []
+
+    for pack in p_list:
+        if(packages_id==pack.id):
+            line_item = [{
+                'name': str(pack.name),
+                'quantity': 1,
+                'description':str(pack.desc1),
+                'currency': 'usd',
+                'amount': str(pack.price)+"00",
+            }]
+    
+    checkout_session = stripe.checkout.Session.create(
+                success_url=domain_url + 'dashboard',
+                cancel_url=domain_url + 'cancelled/',
+                payment_method_types=['card'],
+                mode='payment',
+                line_items=line_item)
+    
+
+    
+    return redirect(checkout_session.url)
