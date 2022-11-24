@@ -1741,6 +1741,7 @@
 				outPut.style.display = 'none';
 				output_field.innerHTML = '<pre>'+data['aioutput']+'</pre>';
 				formSubmit.value = "Create";
+				$('.notify.-hidden').removeClass('-hidden').appendTo('body');
 			  })
 			
 

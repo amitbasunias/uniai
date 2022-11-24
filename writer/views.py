@@ -182,9 +182,13 @@ def get_result(request):
         creatives= hello(creativeness)
         tone=utone(usertone)
         aioutput= direction(usertile, usertext, tone, creatives, qa, aa, qb, num)
+        print(type(aioutput))
+        note_title = aioutput[:15]+"..."
+        if aioutput:
+            note = notes.objects.create(owner=request.user,title=note_title, text=aioutput)
 
     data = { "aioutput": aioutput,}
-    print(data)
+
 
     return JsonResponse(data, safe=False)
 
