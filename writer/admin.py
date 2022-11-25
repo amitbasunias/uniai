@@ -14,7 +14,7 @@ class AdminUserAcc(UserAdmin):
     list_filter = ('email','firstname','lastname','credit')
 
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'password','credit')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
     add_fieldsets = (
