@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from .beta import *
 
@@ -17,6 +18,8 @@ from .forms import NewUserForm
 from .models import packages
 
 # Create your views here.
+
+
 def home(request):
 
     model = packages
@@ -32,23 +35,24 @@ def home(request):
         'test_var': test_var,
         'p_list': p_list,
     })
-
+@login_required(login_url='/login/')
 def dashboard(request):
     return render(request, 'dash.html')
 
-
+@login_required(login_url='/login/')
 def package(request):
     return render(request, 'package.html')
-
+@login_required(login_url='/login/')
 def profile(request):
     return render(request, 'profile.html')
 
-
+@login_required(login_url='/login/')
 def history(request):
     return render(request, 'history.html')
 
+
 def loginview(request):
-    
+
     if request.method == "POST":
 
         form_class = AuthenticationForm(request.POST, request.POST)
@@ -59,7 +63,7 @@ def loginview(request):
             user = authenticate(username=username, password=password)
 
             login(request, user)
-            return redirect('/')
+            return redirect('/dashboard')
         else:
             print("login invalid")
             print(form_class.errors)
@@ -83,6 +87,7 @@ def register(request):
 
     return render(request, 'register.html')
 
+@login_required(login_url='/login/')
 def write(request):
     if request.method == 'POST':
 
@@ -121,6 +126,7 @@ def write(request):
         print(blogExpandedA)
 
     return render(request, 'write.html')
+
 def create(request):
     if request.method =='POST':
         usertile = request.POST.get('usertitle')

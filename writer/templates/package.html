@@ -68,23 +68,31 @@
                                                     <div class="p_header-img">
                                                         <img src="../../assets/img/svg/p_img1.svg" alt="">
                                                     </div>
+                                                    <form name="package1" method="POST">
+                                                        {% csrf_token %}
                                                     <div class="p_header-content">
                                                         <h4>Starter</h4>
                                                         <h1>$30</h1>
                                                         <p>Per Month</p>
+                                                       <a href="#" class="btn mt-10" type="submit">Order Now</a>
                                                     </div>
                                                 </div>
+                                                </form>
                                                 <!-- End Price Header -->
 
                                                 <!-- End Price Body -->
                                                 <div class="price-body">
                                                     <h5 class="mb-3">Package Detail</h5>
+                                                     <form name="package1" method="POST">
+                                                        {% csrf_token %}
+
                                                     <ul class="list-unstyled mb-4">
                                                         <li><i class="icofont-check"></i> 50,000 words per month</li>
                                                         <li><i class="icofont-check"></i> Access our powerful SEO optimized blog editor.</li>
                                                     </ul>
 
-                                                    <a href="#" class="btn mt-10">Order Now</a>
+                                                    <a href="#" class="btn mt-10" type="submit">Order Now</a>
+                                                         </form>
                                                 </div>
                                                 <!-- End Price Body -->
                                             </div>

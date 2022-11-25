@@ -70,9 +70,8 @@
                     <div class="attr-nav">
                         <ul>
                             {% if user.is_authenticated %}
-                                <li><a>{{user.email}}</a></li>
-                                <li><a>Credits: {{user.credit}}</a></li>
-                                <li><a href= "/logout">Logout</a></li>
+                            <li class="button circle btn-gradient"><a href="/dashboard" >Dashboard <i class="icofont-rounded-right"></i> </a></li>
+                                <li><a href="/logout">Logout</a></li>
                             {% else %}    
                                 <li ><a href="/login">Login</a></li>
                                 <span></span>
