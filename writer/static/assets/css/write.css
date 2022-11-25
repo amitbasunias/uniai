@@ -928,3 +928,19 @@ input[type=range]:focus::-ms-fill-upper {
 	opacity: 0;
 	transform: scaleY(0);
 }
+.alert {
+	text-align: center;
+	padding: 20px;
+	border: none;
+}
+.alert.alert-danger {
+	width: 65%;
+	background-color: #eb212e;
+	font-family: "Open Sans", Arial, sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	color: #ffffff;
+	font-weight: normal;
+	font-style: normal;
+	letter-spacing: normal;
+}

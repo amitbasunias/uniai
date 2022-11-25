@@ -209,7 +209,7 @@ def checkout(request, packages_id):
             }]
     
     checkout_session = stripe.checkout.Session.create(
-                success_url=domain_url + 'dashboard',
+                success_url=domain_url + 'dashboard/{CHECKOUT_SESSION_ID}'+str(packages_id),
                 cancel_url=domain_url + 'cancelled/',
                 payment_method_types=['card'],
                 mode='payment',
@@ -218,3 +218,7 @@ def checkout(request, packages_id):
 
     
     return redirect(checkout_session.url)
+
+def package_purchase(request, session_id, packages_id):
+
+        return render(request, 'dash.html')

@@ -536,9 +536,14 @@
 <div class="copy-text">
 <button><i class="fa fa-clone"></i></button>
 </div>
-<div class='notify -hidden'>
-    Saved
-</div>
+{% if user.credit == 0 %}
+<div class="alert alert-danger fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true"></span>   
+     </button>
+      <strong>Warning!</strong> Your have no credits remaining.
+  </div>
+  {% endif %}
 
   <div id="footer">Copyright © <span id="latest-year">2022</span> by UniAI All Rights Reserved.</div>
  </div>
