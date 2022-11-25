@@ -517,7 +517,7 @@
 </form>
 
 <div id="output" contenteditable="true" spellcheck="false" autocomplete="off"><div class="generating-text">
-    {{output}}
+    
 </div></div>
 <iframe id="framesource" class="app-input" name="framesource"></iframe>
 <div id="save-content-wrap">
@@ -528,9 +528,23 @@
 </form>
 <iframe id="saveframe" class="app-input" name="saveframe"></iframe>
 </div>
-     {% for out in result %}
-<div class="out">{{out}} {{result}}</div>
-     {% endfor %}
+
+
+{% block ai_output %}
+<div id="ai" class="out"> </div>
+{% endblock %}
+<div class="copy-text">
+<button><i class="fa fa-clone"></i></button>
+</div>
+{% if user.credit == 0 %}
+<div class="alert alert-danger fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true"></span>   
+     </button>
+      <strong>Warning!</strong> Your have no credits remaining.
+  </div>
+  {% endif %}
+
   <div id="footer">Copyright © <span id="latest-year">2022</span> by UniAI All Rights Reserved.</div>
  </div>
 </div>
@@ -573,7 +587,9 @@
 <script src="{% static 'assets/js/fontawesome.min.js'%}"></script>
 <script src="{% static 'assets/js/quill.min.js'%}"></script>
 <script src="{% static 'assets/js/writing.js'%}?version=34"></script>
+
 <script>
+
 </script>
  </body>
 </html>

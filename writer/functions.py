@@ -231,7 +231,7 @@ def direction(usertile, usertext, tone, creatives, qa, aa, qb, num):
 
     elif 'blogTitle':
 
-        output = blogTile(usertile, usertext, tone, creatives)
+        output = blogTitle(usertile, usertext, tone, creatives)
 
 
     elif 'newsletterIdeas':

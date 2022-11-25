@@ -6270,9 +6270,9 @@ body.sidebar-folded.open-sidebar-folded .footer {
 .main-content {
   min-height: calc(100vh - 190px);
   margin-left: 275px;
-  position: relative;
+  position: absolute;
   overflow: hidden;
-  width: 100%;
+  width: none;
   max-width: 100%;
   margin-top: 120px;
 }
@@ -12369,5 +12369,93 @@ select#locale {
 .card-localization .card-text {
   line-height: 1.733;
 }
-
+.pricecard{
+  min-height: 300px;
+  background: #664aee;
+  display: inline-block;
+  margin: 2%;
+  padding:10% 5%;
+  border-radius: 10px;
+  }
+.pricecard h2{
+  color: white;
+}
+.pricecard h3{
+  color: white;
+}
+.pricecard p{
+  color: white;
+}
+.pricecard li{
+    color: #fff;
+   }
+   .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+ .card { 
+    margin-top: 10px;
+    margin-left: 30px;
+    padding: 20px;
+    width: 90%;
+    min-height: 800px;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+  }
+  
+ .card:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+  
+.card__link,
+.card__exit,
+.card__icon {
+    position: relative;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+ .card__link::after {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    content: "";
+    width: 0%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: all 0.5s;
+  }
+  
+.card__link:hover::after {
+    width: 100%;
+  }
+  
+  
+ .card__icon {
+    grid-row: 2/3;
+    font-size: 30px;
+  }
+  
+ .card__title {
+    grid-row: 3/4;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  
+ .card__apply {
+    grid-row: 4/5;
+    align-self: center;
+  }
+  
+ /* CARD BACKGROUNDS */
+  
+  .card-1 {
+    background: radial-gradient(#7D9D9C, #576F72);
+  }
 /*# sourceMappingURL=style.css.map */

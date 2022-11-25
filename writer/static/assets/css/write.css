@@ -854,3 +854,93 @@ input[type=range]:focus::-ms-fill-upper {
 		width: 100%!important;
 	}
 }
+
+.pre {
+	white-space: pre-line;
+}
+
+.copy-text {
+	position: relative;
+	padding: 10px;
+	background: #fff;
+	float: right;
+	display: flex;
+}
+.copy-text button {
+	padding: 10px;
+	background: #5784f5;
+	color: #fff;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.copy-text button:active {
+	background: #809ce2;
+}
+.copy-text button:before {
+	content: "Copied";
+	position: absolute;
+	top: -45px;
+	right: 0px;
+	background: #5c81dc;
+	padding: 8px 10px;
+	border-radius: 20px;
+	font-size: 15px;
+	display: none;
+}
+.copy-text button:after {
+	content: "";
+	position: absolute;
+	top: -20px;
+	right: 25px;
+	width: 10px;
+	height: 10px;
+	background: #5c81dc;
+	transform: rotate(45deg);
+	display: none;
+}
+.copy-text.active button:before,
+.copy-text.active button:after {
+	display: block;
+}
+.notify {
+	background: #664aee;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+	color: #fff;
+	display: inline-block;
+  font-size: 14px;
+	padding: 0.8rem 1.4rem;
+	position: absolute;
+  top: 0;
+	right: 20px;
+	transition: all 0.5s ease-in-out;
+	transform-origin: left top;
+	transform: scaleY(1);
+	z-index: 3;
+}
+.notify.-hidden {
+	opacity: 0;
+	transform: scaleY(0);
+}
+.alert {
+	text-align: center;
+	padding: 20px;
+	border: none;
+}
+.alert.alert-danger {
+	width: 65%;
+	background-color: #eb212e;
+	font-family: "Open Sans", Arial, sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	color: #ffffff;
+	font-weight: normal;
+	font-style: normal;
+	letter-spacing: normal;
+}

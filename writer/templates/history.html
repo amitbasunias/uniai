@@ -38,53 +38,15 @@
 
     {% include "nav.html" %}
 
-
-    <div class="card mb-30">
-        <div class="main-content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                                <div class="card-body">
-                                    <div class="d-sm-flex justify-content-between align-items-center">
-                                        <h4 class="font-20">History Of Generated Content</h4>
-
-                                        <div class="d-flex flex-wrap">
-                                            <!-- Date Picker -->
-
-                                            <!-- End Date Picker -->
-
-
-                                            <!-- Dropdown Button -->
-
-                                         <!-- End Dropdown Button -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="table-responsive">
-                                    <!-- Invoice List Table -->
-                                    <table class="text-nowrap bg-white dh-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Name <img src="../../assets/img/svg/table-down-arrow.svg" alt="" class="svg"></th>
-                                                <th>Words <img src="../../assets/img/svg/table-down-arrow.svg" alt="" class="svg"></th>
-                                                <th>Date <img src="../../assets/img/svg/table-down-arrow.svg" alt="" class="svg"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>How to Write Content?</td>
-                                                <td>1253</td>
-                                                <td>26 November 2022</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <!-- End Invoice List Table -->
-                                </div>
-                            </div>
-                    </div>
-                </div>
-        </div>
+    {% for note in view_note %}
+   <div class="cards">
+    <div class="card card-1">
+      <h2 class="card__title">{{note.title}}</h2>
+      <p class="card__apply">
+        <a class="card__link" href='/notes/{{note.id}}'>Open <i class="fas fa-arrow-right"></i></a>
+      </p>
     </div>
+    {% endfor %}
       <!-- End Main Wrapper -->
 
 

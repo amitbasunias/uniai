@@ -4,13 +4,13 @@ def hello(creativeness):
     elif creativeness == '2':
         creative = 0.2
     elif creativeness == "3":
-        creative = "0.3"
+        creative = 0.3
     elif creativeness == '4':
         creative = 0.4
     elif creativeness == '5':
         creative = 0.6
     elif creativeness == "7":
-        creative = "0.7"
+        creative = 0.7
     elif creativeness == '8':
         creative = 0.8
     elif creativeness == '9':

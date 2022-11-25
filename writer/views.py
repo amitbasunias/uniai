@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.conf import settings
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from .beta import *
 
+from django.http import JsonResponse, HttpResponse
+import json
+import stripe
+
+from .beta import *
 from .creativity import *
 from .utone import *
 from .functions import *
@@ -15,7 +21,7 @@ OPENAI_API_KEY = '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'
 
 openai.api_key = OPENAI_API_KEY
 from .forms import NewUserForm
-from .models import packages
+from .models import packages, notes
 
 # Create your views here.
 
@@ -25,14 +31,12 @@ def home(request):
     model = packages
     template_name = "home.html"
 
-    test_var = "This is a test"
 
     p_list = packages.objects.all()
     #def get_queryset(self):
         #return packages.objects.all()
 
     return render(request,'home.html',{
-        'test_var': test_var,
         'p_list': p_list,
     })
 @login_required(login_url='/login/')
@@ -42,13 +46,27 @@ def dashboard(request):
 @login_required(login_url='/login/')
 def package(request):
     return render(request, 'package.html')
-@login_required(login_url='/login/')
+
+    p_list = packages.objects.all()
+    return render(request, 'package.html', {
+        'p_list': p_list,
+    })
+
+
 def profile(request):
     return render(request, 'profile.html')
 
 @login_required(login_url='/login/')
 def history(request):
-    return render(request, 'history.html')
+    view_note = notes.objects.filter(owner=request.user)
+
+    return render(request, 'history.html', { 'view_note': view_note,})
+
+def notes_view(request,notes_id):
+    edit_note = notes.objects.get(id=notes_id)
+    print(edit_note.text)
+
+    return render(request, "notes.html",{ 'edit_note': edit_note,})
 
 
 def loginview(request):
@@ -128,20 +146,91 @@ def write(request):
     return render(request, 'write.html')
 
 def create(request):
+
     if request.method =='POST':
-        usertile = request.POST.get('usertitle')
-        usertext = request.POST.get('userprompt')
-        usertone = request.POST.get('tone')
-        creativeness = request.POST.get('creativity')
-        qa = request.POST.get('qa')
-        aa = request.POST.get('aa')
-        qb = request.POST.get('qb')
-        num = request.POST.get('num')
+
+        get_result(request)
+
+        #usertile = request.POST.get('usertitle')
+        #usertext = request.POST.get('userprompt')
+        #usertone = request.POST.get('tone')
+        #creativeness = request.POST.get('creativity')
+        #qa = request.POST.get('qa')
+        #aa = request.POST.get('aa')
+        #qb = request.POST.get('qb')
+        #num = request.POST.get('num')
+        #creatives= hello(creativeness)
+        #tone=utone(usertone)
+        #print(usertext)
+        #print(tone)
+        #print(creatives)
+        #aioutput= direction(usertile, usertext, tone, creatives, qa, aa, qb, num)
+        #print(aioutput)
+        #print(type(aioutput))
+
+        #data = { "aioutput": aioutput,}
+        #return HttpResponse(json.dumps(data))
+
+        #if request.method =='GET':
+            #return JsonResponse(data)
+    return render(request, 'indexsec.html')
+
+def get_result(request):
+
+    if request.method =='POST':
+        json_req = json.loads(request.body.decode('utf-8'))
+        print(json_req)
+        print(json_req['text'])
+
+        #print("json text: ", request.body.get('text'))
+        usertile = json_req['title']
+        usertext = json_req['text']
+        usertone = json_req['tone']
+        creativeness = json_req['creativity']
+        qa = json_req['qa']
+        aa = json_req['aa']
+        qb = json_req['qb']
+        num = json_req['num']
         creatives= hello(creativeness)
         tone=utone(usertone)
-        print(usertext)
-        print(tone)
-        print(creatives)
         aioutput= direction(usertile, usertext, tone, creatives, qa, aa, qb, num)
-        print(aioutput)
-    return render(request, 'indexsec.html')
+        print(type(aioutput))
+        note_title = aioutput[:15]+"..."
+        if aioutput:
+            note = notes.objects.create(owner=request.user,title=note_title, text=aioutput)
+
+    data = { "aioutput": aioutput,}
+
+
+    return JsonResponse(data, safe=False)
+
+def checkout(request, packages_id):
+    p_list = packages.objects.all()
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    domain_url = "https://afikur-rahman1-refactored-computing-qgp6r5x9prj3gj7-8000.preview.app.github.dev/"
+    line_item = []
+
+    for pack in p_list:
+        if(packages_id==pack.id):
+            line_item = [{
+                'name': str(pack.name),
+                'quantity': 1,
+                'description':str(pack.desc1),
+                'currency': 'usd',
+                'amount': str(pack.price)+"00",
+            }]
+    
+    checkout_session = stripe.checkout.Session.create(
+                success_url=domain_url + 'dashboard/{CHECKOUT_SESSION_ID}'+str(packages_id),
+                cancel_url=domain_url + 'cancelled/',
+                payment_method_types=['card'],
+                mode='payment',
+                line_items=line_item)
+    
+
+    
+    return redirect(checkout_session.url)
+
+def package_purchase(request, session_id, packages_id):
+
+        return render(request, 'dash.html')

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import NewUserForm
-from .models import UserAcc, packages
+from .models import UserAcc, packages, notes
 
 # Register your models here.
 
@@ -30,3 +30,4 @@ class AdminUserAcc(UserAdmin):
 
 admin.site.register(UserAcc, AdminUserAcc)
 admin.site.register(packages)
+admin.site.register(notes)
