@@ -49,3 +49,15 @@
                             </div>
                         </div>
                     </div>
+
+
+
+                      {% for note in view_note %}
+   <div class="cards">
+    <div class="card card-1">
+      <h2 class="card__title">{{note.title}}</h2>
+      <p class="card__apply">
+        <a class="card__link" href='/notes/{{note.id}}'>Open <i class="fas fa-arrow-right"></i></a>
+      </p>
+    </div>
+    {% endfor %}

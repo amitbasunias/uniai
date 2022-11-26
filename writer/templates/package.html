@@ -5,7 +5,7 @@
 
 <head>
    <!-- Page Title -->
-   <title>Dashmin - Multipurpose Bootstrap Dashboard Template</title>
+   <title>Dashboard- Package</title>
 
    <!-- Meta Data -->
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,7 +55,7 @@
                                 <div class="col-xl-11">
                                     <div class="row justify-content-center">
 
-
+ {% for packages in p_list %}
                                         <div class="col-xl-4 col-md-6">
                                             <!-- Price Box -->
                                             <div class="price-box mb-30">
@@ -65,11 +65,11 @@
                                                         <img src="../../assets/img/svg/p_img3.svg" alt="">
                                                     </div>
                                                     <div class="p_header-content">
-                                                                 {% for packages in p_list %}
-                                                        <h4>Enterprisev {{ packages.name }}</h4>
-                                                        <h1>$459</h1>
-                                                        <p>For 5 Years</p>
-                                                        {% endfor %}
+
+                                                        <h4>{{ packages.name }}</h4>
+                                                        <h1>${{ packages.price }}</h1>
+                                                        <p>/{{ packages.cycle }}</p>
+                                        <p style="font-style: italic;"> {{ packages.limited_offer_desc }}</p>
                                                     </div>
                                                 </div>
                                                 <!-- End Price Header -->
@@ -78,27 +78,19 @@
                                                 <div class="price-body">
                                                     <h5 class="mb-3">Package Detail</h5>
                                                     <ul class="list-unstyled mb-4">
-                                                        <li><i class="icofont-check"></i> Accounting dashboard</li>
-                                                        <li><i class="icofont-check"></i> Invoicing</li>
-                                                        <li><i class="icofont-check"></i> Online payments</li>
-                                                        <li><i class="icofont-check"></i> Branded website</li>
-                                                        <li><i class="icofont-close text-danger"></i> Dedicated account manager</li>
-                                                        <li><i class="icofont-close text-danger"></i> Premium apps</li>
+                                                            <li> <i class="icofont-check"></i> {{ packages.desc1 }}</li>
+                                                    <li> <i class="icofont-check"></i> {{ packages.desc2 }}</li>
+
                                                     </ul>
 
-                                                    <h5 class="mb-3">More you get</h5>
-                                                    <ul class="list-unstyled mb-4">
-                                                        <li><i class="icofont-check"></i> Accounting dashboard</li>
-                                                        <li><i class="icofont-check"></i> Invoicing</li>
-                                                        <li><i class="icofont-close text-danger"></i> Online payments</li>
-                                                    </ul>
 
-                                                    <a href="#" class="btn mt-10">Order Now</a>
+                                                    <a href="/checkout/{{packages.id}}" class="btn mt-10">Order Now</a>
                                                 </div>
                                                 <!-- End Price Body -->
                                             </div>
                                             <!-- End Price Box -->
                                         </div>
+                                         {% endfor %}
                                     </div>
                                 </div>
 

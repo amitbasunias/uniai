@@ -45,7 +45,6 @@ def dashboard(request):
 
 @login_required(login_url='/login/')
 def package(request):
-    return render(request, 'package.html')
 
     p_list = packages.objects.all()
     return render(request, 'package.html', {

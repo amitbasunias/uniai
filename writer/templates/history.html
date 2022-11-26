@@ -5,7 +5,7 @@
 
 <head>
    <!-- Page Title -->
-   <title>Dashmin</title>
+   <title>Dashmin - Multipurpose Bootstrap Dashboard Template</title>
 
    <!-- Meta Data -->
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,11 +23,11 @@
    <!-- ======= BEGIN GLOBAL MANDATORY STYLES ======= -->
 
 
-   <link rel="stylesheet" href="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.css' %}">
-   <link rel="stylesheet" href="{% static 'fonts/icofont/icofont.min.css' %}">
-   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-   <link rel="stylesheet" href="{% static 'plugins/apex/apexcharts.css' %}">
-     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <link rel="stylesheet" href="{% static 'assets/plugins/perfect-scrollbar/perfect-scrollbar.min.css' %}">
+   <link rel="stylesheet" href="{% static 'assets/fonts/icofont/icofont.min.css' %}">
+   <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'assets/plugins/apex/apexcharts.css' %}">
+     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 
    <!-- ======= END MAIN STYLES ======= -->
 
@@ -38,15 +38,57 @@
 
     {% include "nav.html" %}
 
-    {% for note in view_note %}
-   <div class="cards">
-    <div class="card card-1">
-      <h2 class="card__title">{{note.title}}</h2>
-      <p class="card__apply">
-        <a class="card__link" href='/notes/{{note.id}}'>Open <i class="fas fa-arrow-right"></i></a>
-      </p>
-    </div>
-    {% endfor %}
+          <div class="main-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card mb-30">
+                                <div class="card-body">
+                                    <div class="d-sm-flex justify-content-between align-items-center">
+                                        <h4 class="font-20">History of Generated Content</h4>
+
+                                        <div class="d-flex flex-wrap">
+                                            <!-- Date Picker -->
+
+                                            <!-- End Date Picker -->
+
+
+                                            <!-- Dropdown Button -->
+
+                                         <!-- End Dropdown Button -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <!-- Invoice List Table -->
+                                    <table class="text-nowrap bg-white dh-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for note in view_note %}
+                                            <tr>
+
+                                                <td> {{note.title}}</td>
+                                                <td><a href="/notes/{{note.id}}">Edit <i class="icofont-arrow-right"></i></a></td>
+                                            </tr>
+                                           {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+
+
+
+         </div>
+
       <!-- End Main Wrapper -->
 
 
@@ -60,12 +102,12 @@
 
 
 
-   <script src="{% static 'js/jquery.min.js' %}"></script>
-   <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-         <script src="{% static 'js/script.js' %}"></script>
-   <script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
-   <script src="{% static 'plugins/apex/custom-apexcharts.js' %}"></script>
-   <script src="{% static 'plugins/apex/apexcharts.min.js' %}"></script>
+   <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+   <script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+         <script src="{% static 'assets/js/script.js' %}"></script>
+   <script src="{% static 'assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+   <script src="{% static 'assets/plugins/apex/custom-apexcharts.js' %}"></script>
+   <script src="{% static 'assets/plugins/apex/apexcharts.min.js' %}"></script>
 
    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
 </body>
