@@ -1699,7 +1699,6 @@
 				keywordLimit.style.color = "black";
 			}
 		});
-	
 		//For output text
 		formSubmit.addEventListener('click', async function() {
 			outPut.style.display = "block";
@@ -1760,6 +1759,15 @@
 				outPut.innerHTML = iframeContents;
 				formSubmit.value = "Create";
 			});
+		});
+
+		let clone = document.getElementById('clone');
+		clone.addEventListener('click', async function(){
+			
+			var text = output_field.innerText;
+    		navigator.clipboard.writeText(text);
+			clone.value = ' Copied';
+
 		});
 	
 		//For text highlight options
