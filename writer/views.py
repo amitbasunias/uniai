@@ -8,7 +8,7 @@ from django.views.generic import ListView
 from .beta import *
 
 from django.http import JsonResponse, HttpResponse
-import json
+import json, string, random
 import stripe
 
 from .beta import *
@@ -231,9 +231,11 @@ def checkout(request, packages_id):
                 'amount': str(pack.price)+"00",
 
             }]
-    
+    payment_key = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k=24))
+    request.session['key'] = payment_key
     checkout_session = stripe.checkout.Session.create(
-                success_url=domain_url + 'dashboard/{CHECKOUT_SESSION_ID}'+str(packages_id),
+                success_url=domain_url + 'dashboard/'+payment_key+'/'+str(packages_id),
                 cancel_url=domain_url + 'cancelled/',
                 payment_method_types=['card'],
                 mode='payment',
@@ -242,6 +244,16 @@ def checkout(request, packages_id):
     
     return redirect(checkout_session.url)
 
-def package_purchase(request, session_id, packages_id):
+def package_purchase(request, package_key, packages_id):
+        package_values = {
+            '1': 50000,
+            '2': 150000,
+        }
+
+        if(package_key == request.session['key']):
+            current_user = UserAcc.objects.get(email=request.user.email)
+            current_user.credit = current_user.credit + package_values[packages_id]
+            current_user.save()
+
 
         return render(request, 'dash.html')
