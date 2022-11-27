@@ -21,7 +21,7 @@ OPENAI_API_KEY = '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'
 
 openai.api_key = OPENAI_API_KEY
 from .forms import NewUserForm
-from .models import packages, notes
+from .models import packages, notes, UserAcc
 
 # Create your views here.
 
@@ -175,6 +175,7 @@ def create(request):
     return render(request, 'indexsec.html')
 
 def get_result(request):
+    user_email = request.user.email
 
     if request.method =='POST':
         json_req = json.loads(request.body.decode('utf-8'))
@@ -196,9 +197,20 @@ def get_result(request):
         print(type(aioutput))
         note_title = aioutput[:15]+"..."
         if aioutput:
+            current_user = UserAcc.objects.get(email=user_email)
+            if (current_user.credit >= len(aioutput.split())):
+                current_user.credit = current_user.credit - len(aioutput.split())
+                current_user.save()
+            else:
+                list_output = aioutput.split()
+                list_output = list_output[:current_user.credit]
+                aioutput = ' '.join(list_output)
+                current_user.credit = current_user.credit - len(aioutput.split())
+                current_user.save()
+            
             note = notes.objects.create(owner=request.user,title=note_title, text=aioutput)
 
-    data = { "aioutput": aioutput,}
+    data = { "aioutput": aioutput, 'word_length': len(aioutput.split()), }
 
 
     return JsonResponse(data, safe=False)
@@ -217,6 +229,7 @@ def checkout(request, packages_id):
                 'description':str(pack.desc1),
                 'currency': 'usd',
                 'amount': str(pack.price)+"00",
+
             }]
     
     checkout_session = stripe.checkout.Session.create(
@@ -225,7 +238,6 @@ def checkout(request, packages_id):
                 payment_method_types=['card'],
                 mode='payment',
                 line_items=line_item)
-    
 
     
     return redirect(checkout_session.url)

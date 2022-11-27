@@ -1705,7 +1705,7 @@
 			outPut.style.display = "block";
 			outPut.innerHTML = '<div class="generating-text"></div>';
 			formSubmit.value = "Loading...";
-
+			var count_words = document.getElementById('words');
 
 			var user_title = userTitle.value;
 			var user_text = userPrompt.value;
@@ -1740,6 +1740,7 @@
 				console.log('Success:', data);
 				outPut.style.display = 'none';
 				output_field.innerHTML = '<pre>'+data['aioutput']+'</pre>';
+				count_words.innerHTML = data['word_length'];
 				formSubmit.value = "Create";
 				$('.notify.-hidden').removeClass('-hidden').appendTo('body');
 			  })
