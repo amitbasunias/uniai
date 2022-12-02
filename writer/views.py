@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from .beta import *
 
+
 from django.http import JsonResponse, HttpResponse
 import json, string, random
 import stripe
@@ -191,6 +192,10 @@ def get_result(request):
         aa = json_req['aa']
         qb = json_req['qb']
         num = json_req['num']
+        language = json_req['language']
+
+        print("Language: ", language)
+
         creatives= hello(creativeness)
         tone=utone(usertone)
         aioutput= direction(usertile, usertext, tone, creatives, qa, aa, qb, num)

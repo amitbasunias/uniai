@@ -1714,6 +1714,7 @@
 			var aa = document.getElementById('a1').value;
 			var qb = document.getElementById('q2').value;
 			var num = document.getElementById('num').value;
+			var select_language = document.getElementById('select_language').value;
 
 			const dict = {
 				'title': user_title,
@@ -1724,6 +1725,7 @@
 				'aa': aa,
 				'qb': qb,
 				'num': num,
+				'language': select_language,
 			}
 
 			const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
